@@ -1,0 +1,9 @@
+button {
+  background-color: rebeccapurple;
+  border: 0;
+  color: #f1f1f1;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+

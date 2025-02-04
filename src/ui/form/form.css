@@ -1,0 +1,33 @@
+input {
+  padding: 8px 0px;
+  border: 0;
+  border-bottom: 2px solid #ebe6e6;
+  /* border: 2px solid #ebe6e6; */
+  outline: 2px solid transparent;
+  color: #5f5e5e;
+}
+::placeholder {
+  color: #777777;
+}
+input:focus {
+  /* outline: 2px solid rebeccapurple; */
+  border-bottom: 2px solid rebeccapurple;
+  /* border: 1px solid rebeccapurple; */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 200px;
+  border: 2px solid #ebe6e6;
+  border-radius: 6px;
+  padding: 20px 40px;
+}
+
+div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
