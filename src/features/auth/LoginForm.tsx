@@ -1,13 +1,12 @@
 import { useForm } from "react-hook-form";
-import useAuthStore from "../../store/auth.store";
+import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
 
   const {register, handleSubmit, formState: {errors}} = useForm();
-  const login = useAuthStore((state: any) => state.login)
   const navigate = useNavigate();
-
+  const {login} = useAuth();
   const onSubmit = async (data: object) => {
     const response = await login(data);
 

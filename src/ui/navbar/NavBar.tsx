@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import useAuthStore from "../../store/auth.store";
 import { useNavigate } from "react-router-dom";
-import { AuthStore } from "../../interface/tutor.interface";
-
+import useAuth
+ from "../../hooks/useAuth";
 import "./navbar.css"
 
 const Navbar = () => {
-  const { isAuthenticated, tutor, logout } = useAuthStore() as AuthStore;
+  const { isAuthenticated, tutor, logout } =  useAuth();
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
