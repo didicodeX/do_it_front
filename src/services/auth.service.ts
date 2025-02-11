@@ -8,7 +8,7 @@ export const login = async (data: object) => {
     const res = await axios.post(`${BASE_URL}/login`, data, {
       withCredentials: true,
     });
-    return { success: true, tutor: res.data.tutor };
+    return { success: res.data.message, tutor: res.data.tutor };
   } catch (error: any) {
     return {
       success: false,
@@ -21,6 +21,8 @@ export const login = async (data: object) => {
 export const checkAuth = async () => {
   try {
     const res = await axios.get(`${BASE_URL}/me`, { withCredentials: true });
+    console.log(res);
+    
     return { success: true, tutor: res.data.tutor };
   } catch {
     return { success: false };
