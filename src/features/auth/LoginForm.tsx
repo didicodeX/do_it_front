@@ -3,29 +3,29 @@ import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-
-  const {register, handleSubmit, formState: {errors}} = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
-  const {login} = useAuth();
+  const { login } = useAuth();
   const onSubmit = async (data: object) => {
     const response = await login(data);
 
-    if(response.success){
-      navigate("/dashboard")
+    if (response.success) {
+      navigate("/dashboard");
+    } else {
+      alert(response.message);
     }
-    else {
-      alert(response.message)
-    }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label>Email</label>
-        <input
-          {...register("tutorEmail", { required: "L'email est requis" })}
-        />
-        {errors.tutorEmail && <p>{errors.tutorEmail.message as string}</p>}
+        <input {...register("email", { required: "L'email est requis" })} />
+        {errors.email && <p>{errors.email.message as string}</p>}
       </div>
 
       <div>

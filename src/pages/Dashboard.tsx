@@ -1,10 +1,10 @@
-import { Tutor } from "../interface/tutor.interface";
+import { User } from "../interface/user.interface";
 import useAuthStore from "../store/auth.store";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const { tutor, isAuthenticated, logout } = useAuthStore() as {
-    tutor: Tutor;
+  const { user, isAuthenticated, logout } = useAuthStore() as {
+    user: User;
     isAuthenticated: boolean;
     logout: () => void;
   };
@@ -21,8 +21,8 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Bienvenue, {tutor.tutorName} !</h1>
-      <p>Email : {tutor.tutorEmail}</p>
+      <h1>Bienvenue, {user.name} !</h1>
+      <p>Email : {user.email}</p>
       <button onClick={handleLogout}>Se déconnecter</button>
     </div>
   );

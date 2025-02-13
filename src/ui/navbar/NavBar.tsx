@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import useAuth
- from "../../hooks/useAuth";
-import "./navbar.css"
+import useAuth from "../../hooks/useAuth";
+import "./navbar.css";
 
 const Navbar = () => {
-  const { isAuthenticated, tutor, logout } =  useAuth();
+  const { isAuthenticated, user, logout } = useAuth();
 
   const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ const Navbar = () => {
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>
-            <li>Bienvenue, {tutor?.tutorName}</li>
+            <li>Bienvenue, {user?.name}</li>
             <li>
               <button onClick={handleLogout} style={styles.button}>
                 Déconnexion
@@ -57,7 +56,7 @@ const styles = {
     gap: "15px",
     padding: "0 20px",
     alignItems: "center",
-    color: "#eee"
+    color: "#eee",
   },
   button: {
     background: "red",
@@ -66,9 +65,9 @@ const styles = {
     padding: "5px 10px",
     cursor: "pointer",
   },
-  a :{
-     color: "#eee"
-  }
+  a: {
+    color: "#eee",
+  },
 };
 
 export default Navbar;

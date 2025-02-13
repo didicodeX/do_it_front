@@ -1,14 +1,14 @@
-export interface Tutor {
-  tutorId: string;
-  tutorName: string;
-  tutorEmail: string;
+export interface User {
+  id: string;
+  name: string;
+  email: string;
   password: string;
 }
 
 export interface AuthStore {
   isAuthenticated: boolean;
 
-  tutor: Tutor;
+  user: User;
 
   logout: () => void;
 }

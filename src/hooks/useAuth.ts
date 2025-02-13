@@ -1,4 +1,4 @@
-import { Tutor } from "../interface/tutor.interface"; // Import the Tutor type
+import { User } from "../interface/user.interface"; // Import the User type
 import useAuthStore from "../store/auth.store";
 import {
   login as loginService,
@@ -8,11 +8,11 @@ import {
 
 const useAuth = () => {
   // 🔹 Hook personnalisé pour l'authentification
-  const { tutor, isAuthenticated, setTutor, setIsAuthenticated } =
+  const { user, isAuthenticated, setTutor, setIsAuthenticated } =
     useAuthStore() as {
-      tutor: Tutor | null;
+      user: User | null;
       isAuthenticated: boolean;
-      setTutor: (tutor: Tutor | null) => void;
+      setTutor: (user: User | null) => void;
       setIsAuthenticated: (isAuthenticated: boolean) => void;
     };
 
@@ -20,7 +20,7 @@ const useAuth = () => {
   async function login(data: object) {
     const response = await loginService(data);
     if (response.success) {
-      setTutor(response.tutor);
+      setTutor(response.user);
       setIsAuthenticated(true);
     }
     return response;
@@ -30,7 +30,7 @@ const useAuth = () => {
   const verifyAuth = async () => {
     const response = await checkAuthService();
     if (response.success) {
-      setTutor(response.tutor);
+      setTutor(response.user);
       setIsAuthenticated(true);
     } else {
       setTutor(null);
@@ -47,7 +47,7 @@ const useAuth = () => {
     }
   };
 
-  return { tutor, isAuthenticated, login, logout, verifyAuth };
+  return { user, isAuthenticated, login, logout, verifyAuth };
 };
 
 export default useAuth;
