@@ -8,11 +8,11 @@ import {
 
 const useAuth = () => {
   // 🔹 Hook personnalisé pour l'authentification
-  const { user, isAuthenticated, setTutor, setIsAuthenticated } =
+  const { user, isAuthenticated, setUser, setIsAuthenticated } =
     useAuthStore() as {
       user: User | null;
       isAuthenticated: boolean;
-      setTutor: (user: User | null) => void;
+      setUser: (user: User | null) => void;
       setIsAuthenticated: (isAuthenticated: boolean) => void;
     };
 
@@ -20,7 +20,7 @@ const useAuth = () => {
   async function login(data: object) {
     const response = await loginService(data);
     if (response.success) {
-      setTutor(response.user);
+      setUser(response.user);
       setIsAuthenticated(true);
     }
     return response;
@@ -29,11 +29,12 @@ const useAuth = () => {
   // 🔹 Vérification automatique au chargement
   const verifyAuth = async () => {
     const response = await checkAuthService();
+    
     if (response.success) {
-      setTutor(response.user);
+      setUser(response.user);
       setIsAuthenticated(true);
     } else {
-      setTutor(null);
+      setUser(null);
       setIsAuthenticated(false);
     }
   };
@@ -42,7 +43,7 @@ const useAuth = () => {
   const logout = async () => {
     const response = await logoutService();
     if (response.success) {
-      setTutor(null);
+      setUser(null);
       setIsAuthenticated(false);
     }
   };

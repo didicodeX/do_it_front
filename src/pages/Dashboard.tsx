@@ -1,13 +1,14 @@
+import useAuth from "../hooks/useAuth";
 import { User } from "../interface/user.interface";
 import useAuthStore from "../store/auth.store";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const { user, isAuthenticated, logout } = useAuthStore() as {
+  const { user, isAuthenticated } = useAuthStore() as {
     user: User;
     isAuthenticated: boolean;
-    logout: () => void;
   };
+  const {logout} = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {

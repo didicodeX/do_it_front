@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/tutors";
+const BASE_URL = "http://localhost:3000/user";
 
 // 🔹 Fonction de connexion
 export const login = async (data: object) => {
@@ -21,7 +21,6 @@ export const login = async (data: object) => {
 export const checkAuth = async () => {
   try {
     const res = await axios.get(`${BASE_URL}/me`, { withCredentials: true });
-    console.log(res);
 
     return { success: true, user: res.data.user };
   } catch {
